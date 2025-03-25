@@ -30,7 +30,7 @@
             android:resource="@array/preloaded_fonts" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="SUA_API_KEY_AQUI" />
+            android:value="AIzaSyBhyLg3uK-0venrZMq8r0ce0o-ohRyM9X4" />
     </application>
 
 </manifest>

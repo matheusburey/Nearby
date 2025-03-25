@@ -8,18 +8,18 @@ val mockMarkets = listOf(
     Market(
         id = "012576ea-4441-4b8a-89e5-d5f32104c7c4",
         categoryId = "146b1a88-b3d3-4232-8b8f-c1f006f1e86d",
-        name = "Sabor Grill",
-        description = "Churrascaria com cortes nobres e buffet variado. Experiência completa para os amantes de carne.",
+        name = "Flame & Feast",
+        description = "Steakhouse with premium cuts and a diverse buffet. A complete experience for meat lovers..",
         coupons = 10,
         rules = listOf(
             Rule(
                 id = "1",
-                description = "Válido até o dia 25/12",
+                description = "Available until 12/31",
                 marketId = "012576ea-4441-4b8a-89e5-d5f32104c7c4"
             ),
             Rule(
                 id = "2",
-                description = "Disponível apenas para consumo local",
+                description = "Valid for dine-in only",
                 marketId = "012576ea-4441-4b8a-89e5-d5f32104c7c4"
             )
         ),
@@ -32,8 +32,8 @@ val mockMarkets = listOf(
     Market(
         id = "2bc11e34-5f30-4ba0-90fa-c1c98f649281",
         categoryId = "146b1a88-b3d3-4232-8b8f-c1f006f1e86d",
-        name = "Café Central",
-        description = "Café aconchegante com opções de lanches e bebidas artesanais. Perfeito para uma pausa.",
+        name = "Central Brew",
+        description = "Cozy café with a variety of snacks and handcrafted drinks. Perfect for a break.",
         coupons = 10,
         rules = emptyList(),
         latitude = -23.559457108504436,
