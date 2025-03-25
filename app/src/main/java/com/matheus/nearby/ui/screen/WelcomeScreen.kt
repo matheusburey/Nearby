@@ -18,7 +18,7 @@ import com.matheus.nearby.ui.components.welcome.WelcomeContent
 import com.matheus.nearby.ui.components.welcome.WelcomeHeader
 
 @Composable
-fun WelcomeScreen(modifier: Modifier = Modifier) {
+fun WelcomeScreen(modifier: Modifier = Modifier, onNavigateTo: () -> Unit) {
     Column(
         modifier = modifier
             .background(Color.White)
@@ -32,7 +32,7 @@ fun WelcomeScreen(modifier: Modifier = Modifier) {
         NearbyButton(
             modifier = Modifier.fillMaxWidth(),
             text = "Start",
-            onClick = {}
+            onClick = onNavigateTo
         )
     }
 }
@@ -40,5 +40,5 @@ fun WelcomeScreen(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun WelcomeScreenPreview() {
-    WelcomeScreen()
+    WelcomeScreen(onNavigateTo = {})
 }

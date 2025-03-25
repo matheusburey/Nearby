@@ -4,13 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import com.matheus.nearby.data.model.Market
+import com.matheus.nearby.data.model.mock.mockMarkets
+import com.matheus.nearby.ui.screen.Home
+import com.matheus.nearby.ui.screen.HomeScreen
+import com.matheus.nearby.ui.screen.MarketDetailsScreen
 import com.matheus.nearby.ui.screen.Splash
 import com.matheus.nearby.ui.screen.SplashScreen
 import com.matheus.nearby.ui.screen.Welcome
@@ -29,21 +33,19 @@ class MainActivity : ComponentActivity() {
                     startDestination = Splash
                 ) {
                     composable<Splash> {
-                        SplashScreen(onNavigateToWelcome = { navController.navigate(Welcome) })
+                        SplashScreen(onNavigateTo = { navController.navigate(Welcome) })
                     }
 
-                    composable<Welcome> { WelcomeScreen() }
+                    composable<Welcome> { WelcomeScreen(onNavigateTo = { navController.navigate(Home) }) }
+
+                    composable<Home> { HomeScreen(onNavigateTo = { navController.navigate(it) }) }
+
+                    composable<Market> {
+                        val selectedMarket = it.toRoute<Market>()
+                        MarketDetailsScreen(market = selectedMarket)
+                    }
                 }
             }
         }
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NearbyTheme {
-
     }
 }

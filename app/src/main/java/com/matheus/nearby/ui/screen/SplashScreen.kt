@@ -15,10 +15,10 @@ import com.matheus.nearby.ui.theme.GreenLight
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(modifier: Modifier = Modifier, onNavigateToWelcome: () -> Unit) {
+fun SplashScreen(modifier: Modifier = Modifier, onNavigateTo: () -> Unit) {
     LaunchedEffect(key1 = Unit) {
         delay(3_000)
-        onNavigateToWelcome()
+        onNavigateTo()
     }
     Box(
         modifier = modifier
@@ -42,5 +42,5 @@ fun SplashScreen(modifier: Modifier = Modifier, onNavigateToWelcome: () -> Unit)
 @Preview
 @Composable
 private fun SplashScreenPreview() {
-    SplashScreen(onNavigateToWelcome = {})
+    SplashScreen(onNavigateTo = {})
 }

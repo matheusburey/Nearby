@@ -74,12 +74,12 @@ fun MarketDetailsScreen(modifier: Modifier = Modifier, market: Market) {
                         modifier=modifier.fillMaxWidth().padding(vertical = 24.dp)
                     )
 
-                    if (market.rules.isNotEmpty()) {
-                        MarketDetailsRules(rules = market.rules)
-                        HorizontalDivider(
-                            modifier=modifier.fillMaxWidth().padding(vertical = 24.dp)
-                        )
-                    }
+//                    if (market.rules.isNotEmpty()) {
+//                        MarketDetailsRules(rules = market.rules)
+//                        HorizontalDivider(
+//                            modifier=modifier.fillMaxWidth().padding(vertical = 24.dp)
+//                        )
+//                    }
 
                     MarketDetailsCoupons(coupons = listOf("ABC12345"))
                 }
