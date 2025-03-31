@@ -23,16 +23,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.matheus.nearby.R
 import com.matheus.nearby.data.model.Market
 import com.matheus.nearby.data.model.mock.mockMarkets
 import com.matheus.nearby.ui.components.button.NearbyButton
 import com.matheus.nearby.ui.components.market_details.MarketDetailsCoupons
 import com.matheus.nearby.ui.components.market_details.MarketDetailsInfos
-import com.matheus.nearby.ui.components.market_details.MarketDetailsRules
 import com.matheus.nearby.ui.theme.Typography
 
 @Composable
-fun MarketDetailsScreen(modifier: Modifier = Modifier, market: Market) {
+fun MarketDetailsScreen(modifier: Modifier = Modifier, market: Market, onNavigateBack: () -> Unit) {
     Box(
         modifier = modifier.fillMaxSize()
     ) {
@@ -69,9 +69,11 @@ fun MarketDetailsScreen(modifier: Modifier = Modifier, market: Market) {
                         .verticalScroll(rememberScrollState())
                 ) {
                     Spacer(modifier = Modifier.height(48.dp))
-                    MarketDetailsInfos(market=market)
+                    MarketDetailsInfos(market = market)
                     HorizontalDivider(
-                        modifier=modifier.fillMaxWidth().padding(vertical = 24.dp)
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 24.dp)
                     )
 
 //                    if (market.rules.isNotEmpty()) {
@@ -93,11 +95,18 @@ fun MarketDetailsScreen(modifier: Modifier = Modifier, market: Market) {
                 )
             }
         }
+        NearbyButton(
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .padding(start =20.dp, top = 38.dp),
+            iconRes = R.drawable.ic_arrow_left,
+            onClick = onNavigateBack
+        )
     }
 }
 
 @Preview
 @Composable
 private fun MarketDetailsScreenPreview() {
-    MarketDetailsScreen(market = mockMarkets.first())
+    MarketDetailsScreen(market = mockMarkets.first(), onNavigateBack={})
 }
