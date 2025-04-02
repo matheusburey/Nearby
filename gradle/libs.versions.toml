@@ -12,6 +12,9 @@ mapsCompose = "4.3.3"
 coil = "3.0.0-rc01"
 navigation = "2.8.9"
 kotlinSerialization = "1.7.3"
+zxing = "3.5.1"
+zxingAndroidEmbedded = "4.3.0"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -32,7 +35,8 @@ maps-compose = { group = "com.google.maps.android", name = "maps-compose", versi
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 kotlin-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerialization" }
-
+zxing = { group = "com.google.zxing", name = "core", version.ref = "zxing" }
+zxing-android-embedded = { group = "com.journeyapps", name = "zxing-android-embedded", version.ref = "zxingAndroidEmbedded" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

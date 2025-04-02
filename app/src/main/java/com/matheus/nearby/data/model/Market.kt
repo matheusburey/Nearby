@@ -9,6 +9,7 @@ data class Market (
     val name: String,
     val description: String,
     val coupons: Int,
+    val rules: List<Rule>,
     val latitude: Double,
     val longitude: Double,
     val address: String,

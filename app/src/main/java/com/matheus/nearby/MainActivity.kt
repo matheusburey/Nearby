@@ -13,6 +13,8 @@ import com.matheus.nearby.data.model.mock.mockMarkets
 import com.matheus.nearby.ui.screen.Home
 import com.matheus.nearby.ui.screen.HomeScreen
 import com.matheus.nearby.ui.screen.MarketDetailsScreen
+import com.matheus.nearby.ui.screen.QRCodeScanner
+import com.matheus.nearby.ui.screen.QrCodeScreen
 import com.matheus.nearby.ui.screen.Splash
 import com.matheus.nearby.ui.screen.SplashScreen
 import com.matheus.nearby.ui.screen.Welcome
@@ -36,13 +38,25 @@ class MainActivity : ComponentActivity() {
 
                     composable<Welcome> { WelcomeScreen(onNavigateTo = { navController.navigate(Home) }) }
 
-                    composable<Home> { HomeScreen(markets = mockMarkets, onNavigateTo = { navController.navigate(it) }) }
+                    composable<Home> {
+                        HomeScreen(
+                            markets = mockMarkets,
+                            onNavigateTo = { navController.navigate(it) })
+                    }
 
                     composable<Market> {
                         val selectedMarket = it.toRoute<Market>()
                         MarketDetailsScreen(
                             market = selectedMarket,
-                            onNavigateBack = { navController.popBackStack() })
+                            onNavigateBack = { navController.popBackStack() },
+                            onNavigateTo = { navController.navigate(QRCodeScanner) }
+                        )
+                    }
+
+                    composable<QRCodeScanner>{
+                        QrCodeScreen(onCompletedScan={qrCodeContent ->
+                            if (qrCodeContent.isNotEmpty()) navController.popBackStack()
+                        })
                     }
                 }
             }

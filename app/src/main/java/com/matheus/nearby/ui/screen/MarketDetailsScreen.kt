@@ -1,5 +1,6 @@
 package com.matheus.nearby.ui.screen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,29 +21,37 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
+// import coil3.compose.AsyncImage
 import com.matheus.nearby.R
 import com.matheus.nearby.data.model.Market
 import com.matheus.nearby.data.model.mock.mockMarkets
 import com.matheus.nearby.ui.components.button.NearbyButton
 import com.matheus.nearby.ui.components.market_details.MarketDetailsCoupons
 import com.matheus.nearby.ui.components.market_details.MarketDetailsInfos
+import com.matheus.nearby.ui.components.market_details.MarketDetailsRules
 import com.matheus.nearby.ui.theme.Typography
 
 @Composable
-fun MarketDetailsScreen(modifier: Modifier = Modifier, market: Market, onNavigateBack: () -> Unit) {
+fun MarketDetailsScreen(
+    modifier: Modifier = Modifier,
+    market: Market,
+    onNavigateBack: () -> Unit,
+    onNavigateTo: () -> Unit
+) {
     Box(
         modifier = modifier.fillMaxSize()
     ) {
-        AsyncImage(
+        Image(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(0.3f),
             contentScale = ContentScale.Crop,
             contentDescription = "local image",
-            model = market.cover
+            painter = painterResource(R.drawable.img_burger),
+            // model = market.cover
         )
 
         Box(
@@ -76,12 +85,14 @@ fun MarketDetailsScreen(modifier: Modifier = Modifier, market: Market, onNavigat
                             .padding(vertical = 24.dp)
                     )
 
-//                    if (market.rules.isNotEmpty()) {
-//                        MarketDetailsRules(rules = market.rules)
-//                        HorizontalDivider(
-//                            modifier=modifier.fillMaxWidth().padding(vertical = 24.dp)
-//                        )
-//                    }
+                    if (market.rules.isNotEmpty()) {
+                        MarketDetailsRules(rules = market.rules)
+                        HorizontalDivider(
+                            modifier = modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 24.dp)
+                        )
+                    }
 
                     MarketDetailsCoupons(coupons = listOf("ABC12345"))
                 }
@@ -91,14 +102,14 @@ fun MarketDetailsScreen(modifier: Modifier = Modifier, market: Market, onNavigat
                         .fillMaxWidth()
                         .padding(top = 24.dp),
                     text = "Read QR code",
-                    onClick = {}
+                    onClick = onNavigateTo
                 )
             }
         }
         NearbyButton(
             modifier = Modifier
                 .align(Alignment.TopStart)
-                .padding(start =20.dp, top = 38.dp),
+                .padding(start = 20.dp, top = 38.dp),
             iconRes = R.drawable.ic_arrow_left,
             onClick = onNavigateBack
         )
@@ -108,5 +119,5 @@ fun MarketDetailsScreen(modifier: Modifier = Modifier, market: Market, onNavigat
 @Preview
 @Composable
 private fun MarketDetailsScreenPreview() {
-    MarketDetailsScreen(market = mockMarkets.first(), onNavigateBack={})
+    MarketDetailsScreen(market = mockMarkets.first(), onNavigateBack = {}, onNavigateTo = {})
 }
